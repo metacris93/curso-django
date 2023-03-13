@@ -1,4 +1,5 @@
 import datetime
+from tabnanny import verbose
 from django.db import models
 from django.utils import timezone
 
@@ -7,6 +8,10 @@ from django.utils import timezone
 class Question(models.Model):
   question_text = models.CharField(max_length=200)
   publicated_at = models.DateTimeField("date published")
+
+  class Meta:
+    ordering = ["publicated_at"]
+    # verbose_name_plural = "Preguntas"
 
   def __str__(self) -> str:
     return self.question_text
